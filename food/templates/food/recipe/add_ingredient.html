@@ -1,0 +1,18 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+{% block content %}
+
+    <h1>Add Ingredient</h1>
+
+    {{ food.name }}
+    {{ food.calories }}
+    {{ food.serving_size }}
+    <form action="" method="POST">
+    {% csrf_token %}
+        {{ form }}
+        <input type="Submit">
+    </form>
+
+
+
+{% endblock%}

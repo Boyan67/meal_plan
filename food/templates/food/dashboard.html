@@ -1,0 +1,227 @@
+{%  extends 'food/main.html' %}
+{% block content %}
+<style>
+   a {
+   color: black;
+   text-decoration: none;
+   }
+   /* Include the padding and border in an element's total width and height */
+   * {
+   box-sizing: border-box;
+   }
+   /* Remove margins and padding from the list */
+   ul {
+   margin: 0;
+   padding: 0;
+   }
+   /* Style the list items */
+   ul li {
+   cursor: pointer;
+   position: relative;
+   padding: 8px 8px 12px 35px;
+       margin: 5px 10px;
+   background: #eee;
+   font-size: 18px;
+   transition: 0.2s;
+   /* make the list items unselectable */
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+       list-style-type: none;
+   }
+   /* Set all odd list items to a different color (zebra-stripes) */
+   ul li:nth-child(odd) {
+   background: #eee;
+   }
+   /* Darker background-color on hover */
+   ul li:hover {
+   background: #ddd;
+   }
+   /* When clicked on, add a background color and strike out text */
+   ul li.checked {
+   background: #5064f4;
+   color: #fff;
+   text-decoration: line-through;
+   }
+   /* Add a "checked" mark when clicked on */
+   ul li.checked::before {
+   content: '';
+   position: absolute;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0 2px 2px 0;
+   top: 13px;
+   left: 16px;
+   transform: rotate(45deg);
+   height: 15px;
+   width: 7px;
+   }
+   /* Style the close button */
+   .close {
+   position: absolute;
+   right: 0;
+   top: 0;
+   padding: 12px 16px 12px 16px;
+   }
+
+   /* Style the header */
+   .header {
+   background-color: #5064f4;
+   padding: 30px 40px;
+   color: white;
+   text-align: center;
+       border-bottom: solid #fff 1px;
+   }
+   /* Clear floats after the header */
+   .header:after {
+   content: "";
+   display: table;
+   clear: both;
+   }
+   /* Style the input */
+   input {
+   margin: 0;
+   border: none;
+   border-radius: 0;
+   width: 75%;
+   padding: 10px;
+   float: left;
+   font-size: 16px;
+   }
+   /* Style the "Add" button */
+   .addBtn {
+   padding: 10px;
+   width: 25%;
+   background: #d9d9d9;
+   color: #555;
+   float: left;
+   text-align: center;
+   font-size: 16px;
+   cursor: pointer;
+   transition: 0.3s;
+   border-radius: 0;
+   }
+   .addBtn:hover {
+   background-color: #bbb;
+   }
+   #meal_plan h5{
+       color: #777;
+       margin-bottom: -3px;
+       padding-right: 5px;
+   }
+   #meal_plan:hover{
+       border-color: #5064f4;
+   }
+   #meal_plan:hover h5{
+       color: #5064f4;
+   }
+   #meal_plan:hover a{
+       color: black;
+   }
+   #add-food:hover {
+       border-color: #5064f4;
+   }
+   #add-food:hover h4{
+       color: #5064f4;
+   }
+
+   #trash-col {
+       margin-top: -15px;
+   }
+
+</style>
+<div class="row">
+   <div class="col-lg-6 col-md-12">
+      <div style="margin: 10px 15px 10px 15px" class="text-center">
+         <h2>MEALS</h2>
+      </div>
+      {% for meal_plan in meal_plans %}
+      <div id="meal_plan" class="card" style="margin: 10px 15px 10px 15px">
+         <div class="card-body">
+            <div class="row">
+               <div class="col-10">
+                  <a href="{% url 'meal_details' meal_plan.pk %}">
+                     <div class="d-flex flex-wrap">
+                        <div>
+                           <h5><b>{{ meal_plan.day }}  </b><span class="badge badge-secondary" style="background-color: #5064f4; font-size: 13px">{{ meal_plan.time }}</span></h5>
+                           <h4 class="card-title">{{ meal_plan.recipe.name }}</h4>
+
+                        </div>
+                     </div>
+                      <span class="badge " style="background-color: darkgreen">Serving: £{{ meal_plan.recipe.price_per_serving }}</span>
+                      <span class="badge " style="background-color: orange">Per 100cal: £{{ meal_plan.recipe.price_per_100cal }}</span>
+                  </a>
+               </div>
+               <div id="trash-col" class="col-2 d-flex flex-column align-items-end">
+                  <a href="{% url 'delete_meal' meal_plan.pk %}" class="p-1">
+                    <i class="bi bi-trash " style="font-size: 2rem; color: #555"></i>
+                  </a>
+                  <button class="btn btn-info p-2">{{ meal_plan.member }}</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+      <div id="add-food" class="card" style="margin: 10px 15px 10px 15px">
+         <a href="{% url 'add_meal' %}" style="color: black;">
+            <div class="card-body">
+               <h4 class="card-title"> Add Food </h4>
+            </div>
+         </a>
+      </div>
+   </div>
+   <div class="col-lg-6 col-md-12">
+      <div style="margin: 10px 15px 10px 15px" class="text-center">
+         <h2>SHOPPING LIST</h2>
+      </div>
+      <div class="card" style="margin: 10px 15px 10px 15px">
+         <div id="myDIV" class="header">
+            <input type="text" id="myInput" placeholder="Title...">
+            <span onclick="newElement()" class="addBtn">Add</span>
+         </div>
+         <ul id="myUL">
+            {% for key, value in count_dict.items %}
+            <li>{{ key.name }} - {{ value }} {{ key.unit }}</li>
+            {% endfor %}
+         </ul>
+      </div>
+   </div>
+</div>
+<script>
+   // Add a "checked" symbol when clicking on a list item
+   var list = document.querySelector('ul');
+   list.addEventListener('click', function(ev) {
+     if (ev.target.tagName === 'LI') {
+       ev.target.classList.toggle('checked');
+     }
+   }, false);
+
+   // Create a new list item when clicking on the "Add" button
+   function newElement() {
+     var li = document.createElement("li");
+     var inputValue = document.getElementById("myInput").value;
+     var t = document.createTextNode(inputValue);
+     li.appendChild(t);
+     if (inputValue === '') {
+       alert("You must write something!");
+     } else {
+       document.getElementById("myUL").appendChild(li);
+     }
+     document.getElementById("myInput").value = "";
+
+     span.appendChild(txt);
+     li.appendChild(span);
+
+
+
+     for (i = 0; i < close.length; i++) {
+       close[i].onclick = function() {
+
+         var div = this.parentElement;
+         div.style.display = "none";
+       }
+     }
+   }
+</script>
+{% endblock %}

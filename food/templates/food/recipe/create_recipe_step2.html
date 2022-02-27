@@ -1,0 +1,17 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+{% block content %}
+    <h1>{{ recipe.name }}</h1>
+    <h2>Add Ingredients</h2>
+    <p>An ingredient</p>
+    <ul>
+    {% for ingredient in ingredients %}
+        <li>{{ ingredient.name }} x {{ ingredient.serving_amount }} {{ ingredient.unit }}</li>
+    {% endfor %}
+
+    </ul>
+    <a href="{% url 'search_ingredient' recipe.pk %}"><button>Add</button></a>
+    <hr>
+    <a href="{% url 'recipes' %}"><button>Done</button></a>
+
+{% endblock %}

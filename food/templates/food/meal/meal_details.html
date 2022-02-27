@@ -1,0 +1,10 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+{% block content %}
+    <h1>Meal</h1>
+    <h2>{{ meal.day }} - {{ meal.recipe }}</h2>
+    <p>tags</p>
+    <h4>Who is cooking: {{ meal.member }}</h4>
+    <h4>When will it be ready: {{ meal.time }}</h4>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+{% block content %}
+
+    <h2>Are you sure you want to delete "{{ food.name }}"?</h2>
+    <form action="{% url 'delete_food' food.id %}" method="POST">
+        {% csrf_token %}
+        <button type="button" class="btn btn-warning"><a href="{% url 'foods' %}">Cancel</a></button>
+        <input class="btn btn-danger" type="Submit">
+    </form>
+
+{% endblock %}

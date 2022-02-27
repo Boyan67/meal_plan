@@ -1,0 +1,14 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+{% block content %}
+
+    <h2>Editing Food - "{{ food.name }}"</h2>
+    <h6>Price per serving: <b> {{ food.price_per_serving }}</b></h6>
+    <h6>Price per 100 calories: <b>{{ food.price_per_100cal }}</b></h6>
+        <form action="" method="POST">
+        {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" name="Submit">
+        </form>
+
+{% endblock %}

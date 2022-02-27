@@ -1,0 +1,36 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+
+{% block content %}
+    <style>
+    a {
+  color: #fbfbfb;
+}
+    </style>
+
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary">
+            <a href="{% url 'create_food'%}">Create New Food</a>
+        </button>
+    </div>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for food in foods %}
+    <tr>
+      <td>{{ food.name }} - {{ food.serving_size }} {{ food.unit }}</td>
+      <td style="width:5%"><button type="button" class="btn btn-primary"><a href="{% url 'edit_food' food.pk %}">View</a></button></td>
+      <td style="width:5%"><button type="button" class="btn btn-danger"><a href="{% url 'delete_food' food.pk %}">Delete</a></button></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{%  extends 'food/main.html' %}
+{%  include 'food/navbar.html' %}
+{% block content %}
+
+    <h1>Search Ingredient</h1>
+
+    <form method='GET'>
+        <input type='text' name='q' />
+        <input type='submit' />
+    </form>
+
+    <ol>
+    {% for object in object_list %}
+        {% if object.name %}
+        <li>
+            <a href="{% url 'add_ingredient' recipe.pk object.pk %}">
+                {{ object.name }}
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ol>
+
+
+
+
+{% endblock%}
