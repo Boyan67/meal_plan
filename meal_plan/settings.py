@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_im+jsrht!z@n^*6r!+wfr7&n+i&nt*_pr1jrun^x@21mrmf(6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['meal-plan-live.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['meal-plan-bobi.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
