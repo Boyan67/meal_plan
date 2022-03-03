@@ -1,4 +1,3 @@
-from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django.forms import ModelForm
 from .models import Food, Recipe, Ingredient, MealPlan, Member
 from django.contrib.auth.forms import UserCreationForm
