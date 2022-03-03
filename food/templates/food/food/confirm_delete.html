@@ -1,12 +1,25 @@
 {%  extends 'food/main.html' %}
 {%  include 'food/navbar.html' %}
 {% block content %}
+    <style>
+    h2{
+        margin-top: 15px;
+    }
+    form button{
+        width: 100%;
+    }
+    form input {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    </style>
 
     <h2>Are you sure you want to delete "{{ food.name }}"?</h2>
+    <hr>
     <form action="{% url 'delete_food' food.id %}" method="POST">
         {% csrf_token %}
-        <button type="button" class="btn btn-warning"><a href="{% url 'foods' %}">Cancel</a></button>
-        <input class="btn btn-danger" type="Submit">
+        <input class="btn btn-danger" type="Submit" value="Delete">
+        <a href="{% url 'foods' %}"><button type="button" class="btn btn-warning">Cancel</button></a>
     </form>
 
 {% endblock %}

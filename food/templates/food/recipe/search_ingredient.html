@@ -1,27 +1,43 @@
 {%  extends 'food/main.html' %}
 {%  include 'food/navbar.html' %}
 {% block content %}
+<style>
+        form input {
 
-    <h1>Search Ingredient</h1>
+            border: none;
+            border-bottom: lightgray 3px solid;
+        }
+        form input:focus{
+            outline: none;
+            border-bottom: #5064f4 3px solid;}
+
+        h2{
+            margin-top: 15px;
+        }
+        p{
+            margin-bottom: 4px;
+        }
+    </style>
+    <div class="container">
+    <h2>Search Ingredient</h2>
+        <hr>
 
     <form method='GET'>
         <input type='text' name='q' />
-        <input type='submit' />
+        <input type='submit' class="btn" value="Search"/>
     </form>
 
-    <ol>
     {% for object in object_list %}
         {% if object.name %}
-        <li>
+        <p>
             <a href="{% url 'add_ingredient' recipe.pk object.pk %}">
                 {{ object.name }}
             </a>
-        </li>
+        </p>
         {% endif %}
     {% endfor %}
-    </ol>
 
 
-
+</div>
 
 {% endblock%}

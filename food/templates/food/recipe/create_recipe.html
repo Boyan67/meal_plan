@@ -1,12 +1,44 @@
 {%  extends 'food/main.html' %}
-{%  include 'food/navbar.html' %}
-{% block content %}
 
+{% block content %}
+<style>
+        form input {
+            width: 45%;
+            border: none;
+            border-bottom: lightgray 3px solid;
+        }
+        form input:focus{
+            outline: none;
+            border-bottom: #5064f4 3px solid;
+        }
+        hr{
+            margin: 8px 0 8px 0;
+        }
+        .btn-info{
+            width: 100%;
+            background-color: #5064f4;
+        }
+
+        h2{
+            margin-top: 15px;
+        }
+    </style>
+<div class="container ">
     <h2>Create a New Recipe </h2>
+    <hr>
     <form action="" method="POST">
     {% csrf_token %}
-        {{ form.as_p }}
-            <input type="submit" name="Submit" value="Next">
+            {% for foo in form %}
+                <div class="d-flex justify-content-between">
+                {{ foo.label }}
+                {{ foo }}
+                </div>
+                <hr>
+            {% endfor %}
+            <div class="d-flex justify-content-between">
+                <input class="btn btn-info" type="Submit">
+            </div>
     </form>
+</div>
 
 {% endblock %}

@@ -1,8 +1,18 @@
+from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django.forms import ModelForm
 from .models import Food, Recipe, Ingredient, MealPlan, Member
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
+
+
+# Widgets
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class TimePickerInput(forms.TimeInput):
+    input_type = 'time'
 
 
 class MemberForm(ModelForm):
@@ -35,6 +45,10 @@ class MealForm(ModelForm):
     class Meta:
         model = MealPlan
         fields = ['date', 'recipe', 'member', 'time']
+        widgets = {
+            'date': DateInput(),
+            'time': TimePickerInput()
+        }
 
 
 class CreateUserForm(UserCreationForm):

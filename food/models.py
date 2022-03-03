@@ -94,7 +94,7 @@ class Ingredient(models.Model):
 
 
 class MealPlan(models.Model):
-    date = models.DateField(auto_now=False, auto_now_add=False, null=True)
+    date = models.DateField()
     day = models.CharField(max_length=10, default=' ', null=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, null=True)
     member = models.ForeignKey(Member, on_delete=models.CASCADE, null=True)

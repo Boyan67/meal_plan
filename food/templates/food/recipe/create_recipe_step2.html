@@ -1,17 +1,19 @@
 {%  extends 'food/main.html' %}
 {%  include 'food/navbar.html' %}
 {% block content %}
-    <h1>{{ recipe.name }}</h1>
-    <h2>Add Ingredients</h2>
-    <p>An ingredient</p>
+    <div class="container">
+    <h2 style="margin-top: 15px">{{ recipe.name }}</h2>
+    <hr>
+    <h3>Add Ingredients</h3>
+    <p>Ingredient List: </p>
     <ul>
     {% for ingredient in ingredients %}
         <li>{{ ingredient.name }} x {{ ingredient.serving_amount }} {{ ingredient.unit }}</li>
     {% endfor %}
 
     </ul>
-    <a href="{% url 'search_ingredient' recipe.pk %}"><button>Add</button></a>
+    <a href="{% url 'search_ingredient' recipe.pk %}"><button class="btn" style="background-color: #5064f4; color: #fbfbfb; width: 15%">Add</button></a>
     <hr>
-    <a href="{% url 'recipes' %}"><button>Done</button></a>
-
+    <a href="{% url 'recipes' %}"><button class="btn btn">Done</button></a>
+</div>
 {% endblock %}

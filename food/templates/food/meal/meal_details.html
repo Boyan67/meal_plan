@@ -1,10 +1,20 @@
 {%  extends 'food/main.html' %}
 {%  include 'food/navbar.html' %}
 {% block content %}
-    <h1>Meal</h1>
-    <h2>{{ meal.day }} - {{ meal.recipe }}</h2>
-    <p>tags</p>
-    <h4>Who is cooking: {{ meal.member }}</h4>
-    <h4>When will it be ready: {{ meal.time }}</h4>
+    <style>
+    h2{
+        margin-top: 15px;
+    }
+    </style>
 
+    <div class="container">
+        <h2>{{ meal.day }} - {{ meal.recipe }}</h2>
+        <hr>
+        <span class="badge " style="background-color: darkgreen">Serving: £{{ meal_plan.recipe.price_per_serving }}</span>
+        <span class="badge " style="background-color: orange">Per 100cal: £{{ meal_plan.recipe.price_per_100cal }}</span>
+        <h4>Who is cooking: {{ meal.member }}</h4>
+        <h4>When will it be ready: <span class="badge badge-secondary" style="background-color: #5064f4; font-size: 17px; color: #fbfbfb">{{ meal.time }}</span></h4>
+        <a href="{% url 'home' %}"><button class="btn">Back</button></a>
+
+    </div>
 {% endblock %}

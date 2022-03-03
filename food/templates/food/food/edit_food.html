@@ -1,14 +1,52 @@
 {%  extends 'food/main.html' %}
-{%  include 'food/navbar.html' %}
-{% block content %}
 
-    <h2>Editing Food - "{{ food.name }}"</h2>
-    <h6>Price per serving: <b> {{ food.price_per_serving }}</b></h6>
-    <h6>Price per 100 calories: <b>{{ food.price_per_100cal }}</b></h6>
-        <form action="" method="POST">
-        {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" name="Submit">
-        </form>
+{% block content %}
+<style>
+        form label {
+            color: red;
+        }
+        form input {
+            width: 45%;
+            border: none;
+            border-bottom: lightgray 3px solid;
+        }
+        form input:focus{
+            outline: none;
+            border-bottom: #5064f4 3px solid;
+        }
+        hr{
+            margin: 8px 0 8px 0;
+        }
+        .btn-info{
+            width: 100%;
+            background-color: #5064f4;
+        }
+
+        h2{
+            margin-top: 15px;
+        }
+    </style>
+<div class="container ">
+    <h2>Edit Food </h2>
+    <hr>
+
+    <form action="" method="POST">
+    {% csrf_token %}
+
+        <h5>Price Per Serving: {{ food.price_per_serving }}</h5>
+        <h5>Price Per 100 calories: {{ food.price_per_100cal }}</h5>
+        <hr>
+            {% for foo in form %}
+                <div class="d-flex justify-content-between">
+                {{ foo.label }}
+                {{ foo }}
+                </div>
+                <hr>
+            {% endfor %}
+            <div class="d-flex justify-content-between">
+                <input class="btn btn-info" type="Submit">
+            </div>
+    </form>
+</div>
 
 {% endblock %}
