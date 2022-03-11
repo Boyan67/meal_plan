@@ -18,7 +18,9 @@
             width: 100%;
             background-color: #5064f4;
         }
-
+        .btn {
+            width: 100%;
+        }
         h2{
             margin-top: 15px;
         }
@@ -38,7 +40,7 @@
             <div class="d-flex justify-content-between">
                 <input class="btn btn-info" type="Submit">
             </div>
-
     </form>
+<a href="{% url 'foods' %}"><button class="btn" id="cancel">Cancel</button></a>
 </div>
 {% endblock %}

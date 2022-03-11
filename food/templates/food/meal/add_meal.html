@@ -28,8 +28,11 @@
             margin: 8px 0 8px 0;
         }
         .btn-info{
-            width: 70%;
+            width: 100%;
             background-color: #5064f4;
+        }
+        .btn {
+            width: 100%;
         }
 
 
@@ -57,10 +60,10 @@
                 <hr>
             {% endfor %}
             <div class="d-flex justify-content-between" style="margin-bottom: 10px;">
-              <a href="#"><button class="btn" id="cancel">Cancel</button></a>
                 <input class="btn btn-info" type="Submit">
             </div>
     </form>
+    <a href="{% url 'home' %}"><button class="btn" id="cancel">Cancel</button></a>
     </div>
 {% endblock %}
 

@@ -32,5 +32,6 @@
         <li>{{ ingredient.name }} x {{ ingredient.serving_amount }}</li>
     {% endfor %}
     </ul>
+    <a href="{% url 'recipes' %}"><button class="btn" id="cancel">Back</button></a>
     </div>
 {% endblock%}
