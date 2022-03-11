@@ -22,5 +22,4 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('logout/', views.logout_user, name='logout'),
     path('profile/', views.profile, name='profile'),
-    # path('populate_foods/', views.populate_foods, name="populate_foods")
 ]
