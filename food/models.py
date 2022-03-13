@@ -82,6 +82,7 @@ class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField(null=True)
+    amount = models.FloatField(null=True)
     serving_amount = models.FloatField(null=True)
     unit = models.CharField(max_length=200, null=True)
     calories = models.FloatField(null=True)

@@ -266,6 +266,7 @@ def add_ingredient(request, pk, food):
             ingredient.price = food.price
             ingredient.calories = food.calories
             ingredient.fat = food.fat
+            ingredient.serving_amount = food.serving_size
             ingredient.carb = food.carb
             ingredient.protein = food.protein
             ingredient.unit = food.unit

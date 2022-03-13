@@ -8,7 +8,7 @@
     <p>Ingredient List: </p>
     <ul>
     {% for ingredient in ingredients %}
-        <li>{{ ingredient.name }} - {{ ingredient.serving_amount }} x {{ ingredient.serving_amount }}{{ ingredient.unit }}</li>
+        <li>{{ ingredient.name }} - {{ ingredient.amount }} x {{ ingredient.serving_amount }}{{ ingredient.unit }}</li>
     {% endfor %}
 
     </ul>

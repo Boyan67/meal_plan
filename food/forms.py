@@ -37,7 +37,7 @@ class RecipeForm(ModelForm):
 class IngredientForm(ModelForm):
     class Meta:
         model = Ingredient
-        fields = ['serving_amount']
+        fields = ['amount']
 
 
 class MealForm(ModelForm):
