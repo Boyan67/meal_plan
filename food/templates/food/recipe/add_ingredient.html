@@ -22,7 +22,7 @@
     <hr>
     <h5>Food: {{ food.name }}</h5>
     <h5>Calories: {{ food.calories }}</h5>
-    <h5>Serving Size: {{ food.unit }}</h5>
+    <h5>Serving Size: {{ food.serving_size }}{{ food.unit }}</h5>
     <form action="" method="POST">
     {% csrf_token %}
         {{ form }}
