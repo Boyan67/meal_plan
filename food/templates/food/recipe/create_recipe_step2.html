@@ -8,11 +8,11 @@
     <p>Ingredient List: </p>
     <ul>
     {% for ingredient in ingredients %}
-        <li>{{ ingredient.name }} x {{ ingredient.serving_amount }} {{ ingredient.unit }}</li>
+        <li>{{ ingredient.name }} - {{ ingredient.serving_amount }} x {{ ingredient.serving_amount }}{{ ingredient.unit }}</li>
     {% endfor %}
 
     </ul>
-    <a href="{% url 'search_ingredient' recipe.pk %}"><button class="btn" style="background-color: #5064f4; color: #fbfbfb; width: 15%">Add</button></a>
+    <a href="{% url 'search_ingredient' recipe.pk %}"><button class="btn" style="background-color: #5064f4; color: #fbfbfb">Add</button></a>
     <hr>
     <a href="{% url 'recipes' %}"><button class="btn btn">Done</button></a>
 </div>
