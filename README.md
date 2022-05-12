@@ -2,7 +2,7 @@
 A meal planning website using Django
 
 ## Test it out!  
-meal-plan-bobi.herokuapp.com/  
+https://meal-plan-test.herokuapp.com/
 Create a new account or use demo account:  
  Username: Demo  
  Passowrd: DemoPassword1  
