@@ -21,8 +21,6 @@ def profile(request):
         form = MemberForm(request.POST, request.FILES, instance=member)
         if form.is_valid():
             form.save()
-        else:
-            print('you twat')
     context = {'form': form}
     return render(request, 'food/account/profile.html', context)
 

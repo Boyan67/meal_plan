@@ -9,7 +9,7 @@ class Member(models.Model):
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
-    profile_pic = models.ImageField(default='donald.jpg', null=True, blank=True)
+    profile_pic = models.ImageField(default='aaa.jpg', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super().save()
